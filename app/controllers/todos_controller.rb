@@ -30,7 +30,7 @@ class TodosController < ApplicationController
   end
 
   def toggle_all
-    Todo.update_all(completed: !params[:completed])
+    Todo.update_all(completed: params[:completed] ? true : false)
     @todos = Todo.all
     render 'todos/toggle_all.js.erb', format: :js
   end
@@ -48,7 +48,9 @@ class TodosController < ApplicationController
   end
 
   def destroy_completed
-    @todos_for_destruction = Todo.completed.all
+    # from Rails 3 where statement became azy evaluation
+    # To refer deleted todos we call `to_a` to evaluate completed scope immediately.
+    @todos_for_destruction = Todo.completed.to_a
     Todo.completed.destroy_all
     render 'todos/destroy_completed.js.erb', format: :js
   end

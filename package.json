@@ -1,5 +1,7 @@
 {
   "name": "todos",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "todomvc-common": "^0.3.1"
+  }
 }

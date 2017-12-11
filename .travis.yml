@@ -7,5 +7,6 @@ before_install:
     - sh -e /etc/init.d/xvfb start
 before_script:
     - bundle exec rake db:migrate
+    - npm install
 script:
     - bundle exec rspec spec
