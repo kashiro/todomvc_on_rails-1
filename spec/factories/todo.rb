@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :todo do
-    title 'test dodo'
+    sequence(:title) { |n| "test todo #{n}" }
   end
   trait :completed do
     completed true
