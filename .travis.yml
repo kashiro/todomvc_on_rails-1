@@ -1,12 +1,18 @@
 langage: ruby
+addons:
+  - chrome: stable
 rvm:
-    - 2.4.2
+  - 2.4.2
 cache: bundler
 before_install:
-    - export DISPLAY=:99.0
-    - sh -e /etc/init.d/xvfb start
+  - wget http://chromedriver.storage.googleapis.com/2.32/chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip
+  - rm chromedriver_linux64.zip
+  - sudo mv -f chromedriver /usr/local/bin/
+  - sudo chmod +x /usr/local/bin/chromedriver
+  - google-chrome-stable --headless --no-sandbox_
 before_script:
-    - bundle exec rake db:migrate
-    - npm install
+  - bundle exec rake db:migrate
+  - npm install
 script:
-    - bundle exec rspec spec
+  - bundle exec rspec spec

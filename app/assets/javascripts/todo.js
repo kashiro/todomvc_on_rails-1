@@ -41,7 +41,7 @@
       }
 
       submitForm() {
-        return this.$input.parents("form").submit();
+        return Rails.fire(this.$input.parents("form")[0], 'submit');
       }
 
       destroyTodo() {
