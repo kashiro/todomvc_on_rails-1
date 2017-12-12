@@ -1,9 +1,10 @@
-Todos::Application.routes.draw do
-  resources :todos do
+Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :todos, only: [:create, :update, :destroy] do
     member do
       post :toggle
     end
-
     collection do
       post :toggle_all
       get :active
@@ -11,6 +12,5 @@ Todos::Application.routes.draw do
       delete :destroy_completed
     end
   end
-
-  root to: "todos#index"
+  root 'todos#index'
 end

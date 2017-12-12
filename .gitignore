@@ -6,6 +6,8 @@
 
 # Ignore bundler config.
 /.bundle
+vendor
+node_modules
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -17,3 +19,6 @@
 
 # config.
 .ruby-version
+
+# Ignore rspec personal settings
+spec/examples.txt
